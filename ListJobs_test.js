@@ -42,10 +42,9 @@ Scenario('List Jobs', async (I) => {
             arbeit.beginnDerTatigkeit =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Beginn der Tätigkeit']/following-sibling::td"}); 
             arbeit.anzahlOffenerStellen =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Anzahl offener Stellen']/following-sibling::td"}); 
             arbeit.arbeitszeit =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Arbeitszeit']/following-sibling::td"});
-            // Will not store optional fields until I learn how to
-            // arbeit.tarifvertrag =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Tarifvertrag']/following-sibling::td"});
-            // arbeit.weitereAngabenZumTarifvertrag =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Weitere Angaben zum Tarifvertrag']/following-sibling::td"}); 
-            // arbeit.mobil =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Mobil']/following-sibling::td"}); 
+            arbeit.tarifvertrag =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Tarifvertrag']/following-sibling::td"});
+            arbeit.weitereAngabenZumTarifvertrag =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Weitere Angaben zum Tarifvertrag']/following-sibling::td"}); 
+            arbeit.mobil =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Mobil']/following-sibling::td"}); 
             arbeit.befristungUnbefristet =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Befristung']/following-sibling::td"}); 
             arbeit.erlernterBeruf =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Erlernter Beruf']/following-sibling::td"}); 
             arbeit.ruckfragenUndBewerbungenAn =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Rückfragen und Bewerbungen an']/following-sibling::td"}); 
