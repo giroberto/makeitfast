@@ -1,0 +1,10 @@
+{
+  "name": "makeit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "codeceptjs": "^1.3.2",
+    "puppeteer": "^1.7.0"
+  }
+}

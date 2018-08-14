@@ -1,0 +1,30 @@
+{
+  "output": "./output",
+  "helpers": {
+    "Puppeteer": {
+      "url": "https://www.make-it-in-germany.com/en/for-qualified-professionals/working/job-listings",
+      "show": true,
+      "disableScreenshots": true,
+      "windowSize": "1600x1200",
+      "chrome": {
+        "args": [
+          "--no-sandbox"
+        ]
+      }
+    },
+    "MyPuppeteer": {
+      "require": "./mypuppeteer_helper.js"
+    }
+  },
+  "include": {
+    "I": "./steps_file.js"
+  },
+  "mocha": {},
+  "bootstrap": false,
+  "teardown": null,
+  "hooks": [],
+  "gherkin": {},
+  "tests": "./*_test.js",
+  "timeout": 10000,
+  "name": "makeit"
+}
