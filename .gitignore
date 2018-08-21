@@ -15,3 +15,4 @@ testpullfilecache*
 package-lock.json
 yarn.lock
 /.vs
+my_file.txt
