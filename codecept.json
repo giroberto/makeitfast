@@ -2,7 +2,7 @@
   "output": "./output",
   "helpers": {
     "Puppeteer": {
-      "url": "https://www.make-it-in-germany.com/en/for-qualified-professionals/working/job-listings",
+      "url": "https://www.make-it-in-germany.com/en/jobs/job-listings",
       "show": true,
       "disableScreenshots": true,
       "windowSize": "1600x1200",
