@@ -13,10 +13,10 @@ Scenario('List Jobs', async (I) => {
     let itens = await I.grabTextFrom({xpath: "//div[@class='table vcjobs list']/div[@class='tr']"});
     let file = fs.createWriteStream("my_file.txt");
     file.write('{ "jobs": [');
-    const qtdPaginas = 3;
-    // for (let page = 1; page <= qtdPaginas; page++){
-    for (let i=1 ; i <= itens.length; i++){
-        for (let i=1 ; i <= 1; i++){
+    const qtdPaginas = 10;
+    for (let page = 1; page <= qtdPaginas; page++){
+        console.log("Itens: "+ itens.length);
+        for (let i=1 ; i <= itens.length; i++){
             jobName =  await I.grabTextFrom({xpath: "//div[@class='table vcjobs list']/div[@class='tr'][" + i + "]/div[@class='td jobtitle']/a"});
             jobPublicationDate = await I.grabTextFrom({xpath: "//div[@class='table vcjobs list']/div[@class='tr'][" + i + "]/div[@class='td date']"});
             jobEmployer = await I.grabTextFrom({xpath: "//div[@class='table vcjobs list']/div[@class='tr'][" + i + "]/div[@class='td'][1]"});
@@ -32,14 +32,14 @@ Scenario('List Jobs', async (I) => {
             I.click({xpath: "//div[@class='table vcjobs list']/div[@class='tr'][" + i + "]/div[@class='td jobtitle']/a"});
             I.waitForNavigation();
             let arbeit = {};
-            let job_details = await I.grabTextFrom({xpath: "//div[@class='table vcjobs detail']/div[@class='tr']"});
+            let job_details = await I.grabTextFromOrBlank({xpath: "//div[@class='table vcjobs detail']/div[@class='tr']"});
             for (let jd_i=1 ; jd_i <= job_details.length; jd_i++){
                 title = await I.grabTextFrom({xpath: "//div[@class='table vcjobs detail']/div[@class='tr'][" + jd_i + "]/div[@class='th']"});
                 value = await I.grabTextFrom({xpath: "//div[@class='table vcjobs detail']/div[@class='tr']["+ jd_i  + "]/div[@class='td']"});
                 arbeit[title.replace(/\s/g, '')] = value;
             }
             let job_details_txt = '';
-            let faq = await I.grabTextFrom({xpath: "//div[@class='faq']"});
+            let faq = await I.grabTextFromOrBlank({xpath: "//div[@class='faq']"});
             for (let faq_i=1 ; faq_i <= faq.length; faq_i++){
                 job_details_txt = await I.grabTextFrom({xpath: "//div[@class='faq'][" + faq_i + "]/div[@class='table vcjobs detail _txt']/div[@class='tr']"});
                 I.say('Type' + typeof job_details_txt);
@@ -79,6 +79,7 @@ Scenario('List Jobs', async (I) => {
             // arbeit.angabenZurBewerbung =  await I.grabTextFromOrBlank({xpath: "//th[text() = 'Angaben zur Bewerbung']/following-sibling::td"}); 
             I.goBack();
             I.waitForElement({ xpath: "//div[@class='jobcontrols'][1]/div[@class='jobprevnext']/a"});
+            I.wait(1);
             file.write('"arbeit" : ' + JSON.stringify(arbeit));
             if (i == itens.length && page == qtdPaginas){
                 file.write('}');
