@@ -1,8 +1,0 @@
-CodeceptJS v1.4.6
-Using test root "/home/serpro_dev/makeitfast"
-
-ListJobs --
- Systementwickler in Norwegen 
-  ✔ List Jobs in 33461ms
-
-  OK  | 1 passed   // 34s

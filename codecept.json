@@ -4,7 +4,7 @@
     "Puppeteer": {
       "url": "https://www.make-it-in-germany.com/en/jobs/job-listings",
       "show": true,
-      "disableScreenshots": true,
+      "disableScreenshots": false,
       "windowSize": "1600x1200",
       "chrome": {
         "args": [
